@@ -1,1 +1,1 @@
-web: gunicorn fpa.wsgi --log-file
+web: gunicorn fpa.wsgi --log-file -
