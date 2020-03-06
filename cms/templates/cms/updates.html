@@ -1,0 +1,69 @@
+{% extends 'cms/main_pages__.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<section class="row page-header">
+    <div class="container">
+        <h4>News & Updates</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-9">
+                {% for post in posts %}
+                <div class="row">
+
+
+                            <div class="col-lg-6">
+
+                                    <a href="{% url 'post-detail' post.slug %}"><img class="img-responsive" src="{{ post.featured_image.url }}" alt=""></a>
+
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <article class="post post-type-image row">
+
+                                    <div class="row article-body">
+                                        <h3 class="post-title"><a href="{% url 'post-detail' post.slug %}">{{ post.title | safe }}</a></h3>
+                                        <ul class="post-meta nav">
+                                            <li class="post-date"><i class="fa fa-calendar-o"></i> <a href="#">{{post.date_posted}}</a></li>
+                                            <li class="posted-by"><i class="fa fa-user"></i>posted by: <a href="#">admin</a></li>
+
+                                        </ul>
+                                    <div class="post-excerpt row" style="margin-top:-5px;">
+
+                                        <br> <div class="block-with-text">
+                                            <p>{{ post.content | safe}}</p>
+                                        </div> <br>
+                                        <a href="{% url 'post-detail' post.slug %}" class="btn-primary btn-outline dark">read more</a>
+                                    </div>
+
+
+                                </article>
+
+                            </div>
+
+                        </div><hr><br>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+{% endblock content %}

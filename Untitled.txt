@@ -1,0 +1,8 @@
+mysql://
+Username: b1047430fee196
+:
+Password: a54efb04
+@
+Host Name: us-cdbr-iron-east-04.cleardb.net
+/
+heroku_bdddba34847e640?reconnect=true

@@ -1,0 +1,91 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<script>
+    document.getElementById("id_content").classList.add("summernote");
+</script>
+
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Delete Page</h1>
+                <h4 class="text-info" >Please delete or update corresponding Menu/Submenu </h4>
+                <hr>
+                    <div class="form-group mt-4">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h3><p>Are you sure you want to delete <b>"{{ page }}"</b>? <br> This is irrevisible. </p></h3>
+                          <br>
+                          <ul>
+
+                          {% for menu in Menu %}
+                            {% if menu.page_id == page.id %}
+                                <li>{{ menu }} {{ menu.page_id }}<br></li>
+                            {% endif %}
+
+                          {% endfor %}
+                          {% if not page.id in Menu %}
+                              <button type="submit" class="btn btn-danger">Delete "{{ page }}" Page</button>
+                          {% endif %}
+
+                          </ul>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_content").classList.add("summernote");
+document.getElementById("id_title").classList.add("form-control", "col-lg-8");
+document.getElementById("id_slug").classList.add("form-control", "col-lg-8");
+
+$(document).ready(function() {
+    //summernote
+    $('.summernote').summernote({
+            placeholder: 'Build Your Amazing Page',
+            tabsize: 2,
+            height: 300,
+            // width: 800,
+            // toolbar: [
+            //   ['style', ['style']],
+            //   ['font', ['bold', 'underline', 'clear']],
+            //   ['color', ['color']],
+            //   ['para', ['ul', 'ol', 'paragraph']],
+            //   ['table', ['table']],
+            //   ['insert', ['link', 'picture', 'video']],
+            //   ['view', ['fullscreen', 'codeview', 'help']]
+            // ]
+          });
+
+          //slug
+          $().ready(function () {
+              $('#id_slug').slugify('#id_title');
+
+              var pigLatin = function(str) {
+                  return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+              }
+
+              $('#pig_latin').slugify('#id_title', {
+                      slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+                  }
+              );
+
+          });
+});
+</script>
+
+{% endblock content %}

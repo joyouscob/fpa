@@ -1,0 +1,208 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<script>
+    document.getElementById("id_content").classList.add("summernote");
+</script>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Home Page Editor</h1>
+                <h6 class="card-subtitle text-danger"> Be sure ou know HTML before editing this page, You can mess up the layout, Proceed with caution. </h6>
+                <hr>
+                    <div class="form-group mt-4">
+                    <form method="POST" action="" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Small Header Right Links</label>
+                            {{ form.mini_header_right }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Small Header Phone Number</label>
+                            {{ form.phone }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Small Header Email</label>
+                            {{ form.email }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Background Video</label>
+                            {{ form.video }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Banner Title</label>
+                            {{ form.title }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Banner Content</label>
+                            {{ form.content }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Banner Button Link</label>
+                            {{ form.link }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Section 1 HTML</label>
+                            {{ form.section1 }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Section 2 HTML</label>
+                            {{ form.section2 }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Footer HTML</label>
+                            {{ form.footer }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Footer Copyright Text</label>
+                            {{ form.copyright_text }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Website Name</label>
+                            {{ form.site_name }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Top Page Nofication</label>
+                            {{ form.toppage_notification }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Website Url</label>
+                            {{ form.website }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Activate</label>
+                            {{ form.active }}
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+
+
+
+
+                      <br>
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_content").classList.add("summernote");
+document.getElementById("id_section1").classList.add("summernote");
+document.getElementById("id_section2").classList.add("summernote");
+document.getElementById("id_footer").classList.add("summernote");
+document.getElementById("id_copyright_text").classList.add("summernote");
+
+document.getElementById("id_mini_header_right").classList.add("summernote");
+document.getElementById("id_phone").classList.add("form-control", "col-lg-8");
+document.getElementById("id_email").classList.add("form-control", "col-lg-8");
+document.getElementById("id_video").classList.add("form-control", "col-lg-8");
+document.getElementById("id_title").classList.add("form-control", "col-lg-8");
+document.getElementById("id_link").classList.add("form-control", "col-lg-8");
+document.getElementById("id_site_name").classList.add("form-control", "col-lg-8");
+document.getElementById("id_toppage_notification").classList.add("form-control", "col-lg-8");
+document.getElementById("id_website").classList.add("form-control", "col-lg-8");
+document.getElementById("id_active").classList.add("form-control", "col-lg-8");
+
+$(document).ready(function() {
+    //summernote
+    $('.summernote').summernote({
+            placeholder: 'Build Your Amazing Post',
+            tabsize: 2,
+            height: 300,
+            width: 800,
+            // toolbar: [
+            //   ['style', ['style']],
+            //   ['font', ['bold', 'underline', 'clear']],
+            //   ['color', ['color']],
+            //   ['para', ['ul', 'ol', 'paragraph']],
+            //   ['table', ['table']],
+            //   ['insert', ['link', 'picture', 'video']],
+            //   ['view', ['fullscreen', 'codeview', 'help']]
+            // ]
+          });
+
+          //slug
+          $().ready(function () {
+              $('#id_slug').slugify('#id_title');
+
+              var pigLatin = function(str) {
+                  return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+              }
+
+              $('#pig_latin').slugify('#id_title', {
+                      slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+                  }
+              );
+
+          });
+});
+</script>
+
+{% endblock content %}

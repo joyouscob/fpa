@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+
+
+
+<textarea name="content" cols="40" rows="10" class="textarea" required="" id="id_content"></textarea>
+
+<input type ="text" value="" id="slug-source"/>
+<input type="text" name="" onkeyup="slug-target" value="">
+<script src="dist/slugify.js"></script>
+<script type="text/javascript">
+    //slug
+    $().ready(function () {
+        $('.slug').slugify('#title');
+
+        var pigLatin = function(str) {
+            return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+        }
+
+        $('#pig_latin').slugify('#title', {
+                slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+            }
+        );
+
+    });
+    // add class to form
+    document.getElementById("id_content").classList.add("summernote");
+    //summernote
+    $(document).ready(function() {
+    $('.summernote').summernote({
+            placeholder: 'Build Your Amazing Page',
+            tabsize: 2,
+            height: 120,
+            width: 1000,
+            toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+          });
+
+    });
+
+</script>
+<script type="text/javascript">
+
+</script>
+    </body>
+</html>

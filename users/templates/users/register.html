@@ -1,0 +1,37 @@
+{% extends 'cms/main.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+<section class="row page-header">
+    <div class="container">
+        <h4>Register</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8">
+                <form method="POST" action="" >
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                  <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+
+                have an account?, login <a href="#">here</a>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+{% endblock content %}

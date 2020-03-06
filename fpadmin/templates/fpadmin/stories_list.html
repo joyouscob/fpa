@@ -1,0 +1,81 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<div class="page-wrapper" style="display: block;">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Stories Manager</h1>
+                                <h6 class="card-subtitle">You can edit and delete stories submitted by the public. You can also create new story.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Date Posted/Edited</th>
+                                            <th scope="col">Video Link</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for story in stories %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>{{ story }}</td>
+                                            <td>{{ story.date_posted }}</td>
+                                            <td>{{ story.video_link }}</td>
+                                            <td> <a class="btn btn-success" href="{% url 'story-detail' story.pk %}"><span class="ti-eye"></span> View</a> <a class="btn btn-danger" href="{% url 'story-delete' story.id %}"><span class="ti-trash"></span> Delete</a> </td>
+                                        </tr>
+
+                                        {% endfor%}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+
+        </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'cms/main.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <section id="good_cause" class="carousel slide" data-ride="carousel">
+        <header>
+              <div class="overlay"></div>
+              <video playsinline="playsinline" width="100%" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="media/{{ homesettings.video }}" type="video/mp4">
+              </video>
+              <div class="container h-100">
+            <div class="d-flex h-100 text-left align-items-center">
+              <div class="w-100 text-white" style="margin-top:330px; color:white;">
+                <h1 style="font-size:80px; font-weight:600; letter-spacing:-0.05em;">{{ homesettings.title }}</h1>
+                <p class="lead mb-0" style="color:white; letter-spacing:-0.05em;">{{ homesettings.content | safe }}</p>
+                <a href="{{ homesettings.link }}" class="btn-primary btn-outline hidden-sm hidden-xs">More</a>
+              </div>
+            </div>
+            </div>
+        </header>
+    </section>
+
+
+
+
+
+
+
+
+    <!--THREE MUSKETEERS-->
+    <section class="how_help row sectionGap">
+        <div class="container">
+            {{ homesettings.section1 | safe }}
+        </div>
+    </section>
+
+
+
+
+    <!--MAP SECTION-->
+    <section class="row quotes_row">
+            <div class="container">
+                {{ homesettings.section2 | safe }}
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+    <!--LASTEST NEWS-->
+    <section class="row latest_news">
+        <div class="container">
+            <div class="row sectionTitle text-center">
+                <h6 class="label label-default">NIHSA</h6>
+                <h3>UPDATES AND STORIES</h3>
+            </div>
+
+
+            <div class="row">
+                {% for post in posts %}
+                    <div class="latest-post col-md-3 col-sm-6">
+                        <div class="row m0 featured_cont">
+                            <a href="{% url 'post-detail' post.slug %}"><img class="img-responsive" src="{{ post.featured_image.url }}" alt=""></a>
+                            <!-- <i class="fa fa-youtube-play"></i> -->
+                        </div>
+                        <h5 class="post-title"><a href="{% url 'post-detail' post.slug %}">{{ post.title | safe }}</a></h5>
+                        <h6 class="post-meta"><a href="#">JOHN DOE</a><a href="{% url 'post-detail' post.slug %}">{{post.date_posted}}</a></h6>
+                        <div class="post-excerpts row m0 block-with-text"><p>{{ post.content | safe}}<br></p></div>
+                        <a href="{% url 'post-detail' post.slug %}" class="btn-primary btn-outline">read more</a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

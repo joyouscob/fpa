@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Helping Hand - Fund rise for great events</title>
+
+    <!--Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Karla:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<style>
+header {
+  position: relative;
+
+  height: 100vh;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
+}
+
+.white-text{
+    color: white;
+}
+</style>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="vendors/owl.carousel/owl.carousel.css">
+    <!--Magnific Popup-->
+    <link rel="stylesheet" href="vendors/magnific-popup/magnific-popup.css">
+    <!--Flip Clock-->
+    <link rel="stylesheet" href="vendors/flip-clock/flipclock.css">
+
+    <!--Theme Styles-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+
+    <!--[if lt IE 9]>
+
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <section class="topbar row">
+        <div class="container">
+            <div class="pull-left welcome-notice">PARTNERS: NEMA | NOA | FRSC | NPF</div>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#"><i class="fa fa-envelope-o"></i>info@fpa.ng</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i>+234 804 657 7689</a></li>
+                <li class="search-form">
+                    <form action="#" method="get" role="form" class="top_search">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Type your location &amp; Enter">
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <nav class="navbar navbar-default navbar-static-top navbar3">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" ><img src="images/logo7.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <a href="#donate_box" class="btn-primary hidden-sm hidden-xs pull-right">Help Centre</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home Variation 1</a></li>
+                            <li><a href="index2.html">Home Variation 2</a></li>
+                            <li><a href="index3.html">Home Variation 3</a></li>
+                            <li><a href="index4.html">Home Variation 4</a></li>
+                            <li><a href="index5.html">Home Variation 5</a></li>
+                            <li><a href="index-single-cause.html">Single Cause Variation 1</a></li>
+                            <li><a href="index-single-cause2.html">Single Cause Variation 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="donation-checkout.html">donate</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Causes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cause-listing-list.html">Cause listing list</a></li>
+                            <li><a href="cause-listing-grid.html">Cause listing grid</a></li>
+                            <li><a href="single-cause.html">Cause details</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">projects</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="project.html">Projects</a></li>
+                            <li><a href="single-project.html">Project Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pages</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="404.html">404</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="single.html">Blog Details</a></li>
+                            <li><a href="events.html">Event Listing</a></li>
+                            <li><a href="single-event.html">Event Details</a></li>
+                            <li><a href="faqs.html">FAQ</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="shortcode.html">Shortcode</a></li>
+                            <li><a href="shortcode2.html">Shortcode Column</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">shop</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="shop.html">Shop</a></li>
+                            <li><a href="single-product.html">Product Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">contact</a></li>
+                </ul>
+            </div>
+            <hr style="background-color:#999;">
+        </div>
+
+    </nav>
+
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <!--VIDEO-->
+    <section id="good_cause" class="carousel slide" data-ride="carousel">
+        <header>
+              <div class="overlay"></div>
+              <video playsinline="playsinline" width="100%" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="images/wavy.mp4" type="video/mp4">
+              </video>
+              <div class="container h-100">
+            <div class="d-flex h-100 text-left align-items-center">
+              <div class="w-100 text-white" style="margin-top:330px; color:white;">
+                <h1 style="font-size:80px; font-weight:600; letter-spacing:-0.05em;">Be Flood Safe</h1>
+                <p class="lead mb-0" style="color:white; letter-spacing:-0.05em;">In flood situations, we may panic and forget the things that matters.<br> NIHSA has written a quick first aid 'todo' in these situations...</p>
+                <a href="#donate_box" class="btn-primary btn-outline hidden-sm hidden-xs">Read Now</a>
+              </div>
+            </div>
+            </div>
+        </header>
+    </section>
+
+
+    <!--THREE MUSKETEERS-->
+    <section class="how_help row sectionGap">
+        <div class="container">
+            <div class="row sectionTitle text-center">
+                <h6 class="label label-default">how you could help</h6>
+                <h3>Failing to evacuate flooded areas, entering flood waters, or remaining after a
+                    flood has passed can result in injury or death. </h3>
+            </div>
+            <div class="row help-process_row">
+                <div class="col-sm-4 help-process">
+                    <div class="icon_box row m0">
+                        <img src="images/help01.png" alt="">
+                    </div>
+                    <h5>IS MY AREA PRONE?</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipis purus efficitur eget. Morbi sagittis mi eros porttitor auctor dui, in bibendum.</p>
+                </div>
+                <div class="col-sm-4 help-process">
+                    <div class="icon_box row m0">
+                        <img src="images/help02.png" alt="">
+                    </div>
+                    <h5>TIPS & HELP</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipis purus efficitur eget. Morbi sagittis mi eros porttitor auctor dui, in bibendum.</p>
+                </div>
+                <div class="col-sm-4 help-process">
+                    <div class="icon_box row m0">
+                        <img src="images/help03.png" alt="">
+                    </div>
+                    <h5>STORIES</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipis purus efficitur eget. Morbi sagittis mi eros porttitor auctor dui, in bibendum.</p>
+                </div>
+            </div>
+            <div class="row m0 buttons">
+                <!--<a href="#donate_box" class="btn-primary">Flood Information Kit</a>-->
+                <!--<a href="volunteer.html" class="btn-primary btn-outline">Tell Your Story</a>-->
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--MAP SECTION-->
+    <section class="row featured_causes_row">
+        <div class="container">
+            <div id="map" class="col-lg-4 white-text">
+                <h1>NIHSA Flood Map</h1>
+                <hr>
+                <p class="white-text">
+                The Map of Nigeria displaying geographical location with flood prediction index.
+                <br><span class="btn" style="background-color:red;"></span> Highly Probable Areas <hr>
+                <br><span class="btn" style="background-color:blue;"></span> Probable Areas <hr>
+                <br><span class="btn" style="background-color:yellow;"></span> Less Probable Areas <hr>
+                </p>
+            </div>
+            <div id="map" class="col-lg-8" style="margin-top:100px;">
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=104YkXDI_om-bIF_4fYTsuOXp84q_xLtT&z=6.5" width="100%" height="500" style="border-style: none; margin-top:-150px;"></iframe>
+            </div>
+        </div>
+    </section>
+
+
+    <!--LASTEST NEWS-->
+    <section class="row latest_news">
+        <div class="container">
+            <div class="row sectionTitle text-center">
+                <h6 class="label label-default">NEWS OF HELPING HANDS</h6>
+                <h3>LATEST NEWS AT HELPING HANDS</h3>
+            </div>
+            <div class="row">
+                <div class="latest-post col-md-3 col-sm-6">
+                    <div class="row m0 featured_cont">
+                        <img src="images/posts/1.jpg" alt="" class="img-responsive">
+                        <i class="fa fa-youtube-play"></i>
+                    </div>
+                    <h5 class="post-title"><a href="#">EVENT FOR PROVIDING PENS TO THE CHILDRENS</a></h5>
+                    <h6 class="post-meta"><a href="#">JOHN DOE</a><a href="#">06 June 2015</a></h6>
+                    <div class="post-excerpts row m0">Phasellus in egestas libero, et cong lacus. Cras vel lacus nisi. Duis null metus, tincidunt at tortor.</div>
+                    <a href="single.html" class="btn-primary btn-outline">read more</a>
+                </div>
+                <div class="latest-post col-md-3 col-sm-6">
+                    <div class="row m0 featured_cont">
+                        <img src="images/posts/2.jpg" alt="" class="img-responsive">
+                    </div>
+                    <h5 class="post-title"><a href="#">EVENT FOR PROVIDING PENS TO THE CHILDRENS</a></h5>
+                    <h6 class="post-meta"><a href="#">JOHN DOE</a><a href="#">06 June 2015</a></h6>
+                    <div class="post-excerpts row m0">Phasellus in egestas libero, et cong lacus. Cras vel lacus nisi. Duis null metus, tincidunt at tortor.</div>
+                    <a href="single.html" class="btn-primary btn-outline">read more</a>
+                </div>
+                <div class="latest-post col-md-3 col-sm-6">
+                    <div class="row m0 featured_cont">
+                        <img src="images/posts/3.jpg" alt="" class="img-responsive">
+                    </div>
+                    <h5 class="post-title"><a href="#">EVENT FOR PROVIDING PENS TO THE CHILDRENS</a></h5>
+                    <h6 class="post-meta"><a href="#">JOHN DOE</a><a href="#">06 June 2015</a></h6>
+                    <div class="post-excerpts row m0">Phasellus in egestas libero, et cong lacus. Cras vel lacus nisi. Duis null metus, tincidunt at tortor.</div>
+                    <a href="single.html" class="btn-primary btn-outline">read more</a>
+                </div>
+                <div class="latest-post col-md-3 col-sm-6">
+                    <div class="row m0 featured_cont">
+                        <img src="images/posts/4.jpg" alt="" class="img-responsive">
+                    </div>
+                    <h5 class="post-title"><a href="#">EVENT FOR PROVIDING PENS TO THE CHILDRENS</a></h5>
+                    <h6 class="post-meta"><a href="#">JOHN DOE</a><a href="#">06 June 2015</a></h6>
+                    <div class="post-excerpts row m0">Phasellus in egestas libero, et cong lacus. Cras vel lacus nisi. Duis null metus, tincidunt at tortor.</div>
+                    <a href="single.html" class="btn-primary btn-outline">read more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="row newsletter_signup style2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4>NEWSLETTER SIGN-UP</h4>
+                    <p>Praesent diam massa, interdum quis ex id, laoreet interdum odio.</p>
+                </div>
+                <form class="col-sm-7 form-inline newsletter_signup_form style2">
+                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="submit" value="submit" class="btn-primary white">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="row foooter footer2">
+        <div class="container">
+            <div class="row footer_sidebar">
+                <div class="widget widget-about col-sm-6 col-md-3">
+                    <h5 class="widget-title">about helping hands</h5>
+                    <p>Praesent diam massa, interdum qu vel ligula tortor. Phasellus gravida faucibus eu. Mauris fringilla place et fermentum hendrerit.</p>
+                    <a href="about.html" class="btn-primary btn-outline white">know more</a>
+                </div>
+                <div class="widget widget-recent-posts col-sm-6 col-md-3">
+                    <h5 class="widget-title">recent posts</h5>
+                    <ul class="nav recent-posts">
+                        <li><a href="single.html">EVENT FOR PROVIDING PENS TO THE THE CHILDRENS</a></li>
+                        <li><a href="single.html">MEDICAL CHECKUP CAMP FOR USE CHILDRENS IN AFRICA</a></li>
+                        <li><a href="single.html">SEMINAR FOR Childrens to WELL know about FUTURE</a></li>
+                    </ul>
+                </div>
+                <div class="widget widget-recent-tweets col-sm-6 col-md-3">
+                    <h5 class="widget-title">recent tweets</h5>
+                    <div class="tweet m0">
+                        <p><a href="#">@Ymodita</a>  hey, please send me a msg through the contact form on my profile page at themeforest <br>
+                        <span class="time_past">2 months ago</span></p>
+                    </div>
+                    <a href="#" class="btn-primary btn-outline white">follow us now</a>
+                </div>
+                <div class="widget widget-contact col-sm-6 col-md-3">
+                    <h5 class="widget-title">CONTACT HELPING HANDS</h5>
+                    <address>
+                        Address will be appear here, some details of text will be here.
+                        <br><br>
+                        <span>Phone</span> : +215 (123) 4567 <br>
+                        <span>Email</span> : <a href="mailto:info@helpinghands.com">info@helpinghands.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+
+        <div class="row copyright_area m0">
+            <div class="container">
+                <div class="copy_inner row">
+                    <div class="col-sm-7 copyright_text">Copyright 2015. All Rights Reserved by <a href="#">Helping Hands</a>. Designed by <a href="http://www.themedesigner.in">Theme Designer</a>.</div>
+                    <div class="col-sm-5 footer-nav">
+                    	<ul class="nav">
+							<li><a href="#">Terms of Use</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Desclaimer</a></li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--Donate Form-->
+    <form action="#" method="get" class="row m0 donate_form mfp-hide" id="donate_box">
+        <h3>ENTER YOUR DONATION AMOUNT</h3>
+
+        <input type="radio" name="donate-amount" id="donate-amount01" value="10">
+        <label for="donate-amount01">
+            <strong>DONATE <span>$10</span></strong><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ips tum sed, suscipit sit amet arcu. Ut ut finibus tortor
+        </label>
+
+        <input type="radio" name="donate-amount" id="donate-amount02" value="25">
+        <label for="donate-amount02">
+            <strong>DONATE <span>$10</span></strong><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ips tum sed, suscipit sit amet arcu. Ut ut finibus tortor
+        </label>
+
+        <input type="radio" name="donate-amount" id="donate-amount03" value="100">
+        <label for="donate-amount03">
+            <strong>DONATE <span>$10</span></strong><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ips tum sed, suscipit sit amet arcu. Ut ut finibus tortor
+        </label>
+
+        <input type="radio" name="donate-amount" id="donate-amount04" value="500">
+        <label for="donate-amount04">
+            <strong>DONATE <span>$10</span></strong><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ips tum sed, suscipit sit amet arcu. Ut ut finibus tortor
+        </label>
+
+        <h5>ENTER CUSTOM AMOUNT</h5>
+
+        <div class="input-group">
+            <span class="input-group-addon left">$</span>
+            <input type="number" class="form-control" name="donate-amount">
+            <span class="input-group-addon right">
+                <button type="submit" class="btn-primary">donate now</button>
+            </span>
+        </div>
+    </form>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--Magnific Popup-->
+    <script src="vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!--Owl Carousel-->
+    <script src="vendors/owl.carousel/owl.carousel.min.js"></script>
+    <!--Flip Clock-->
+    <script src="vendors/flip-clock/flipclock.min.js"></script>
+    <!--CounterUp-->
+    <script src="vendors/couterup/jquery.counterup.min.js"></script>
+    <!--WayPoints-->
+    <script src="vendors/waypoint/waypoints.min.js"></script>
+    <!--Theme Script-->
+    <script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% extends 'cms/main_pages__.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<section class="row page-header">
+    <div class="container">
+        <h4>Tell Your Story</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8">
+
+
+                <script>
+                    document.getElementById("id_content").classList.add("summernote");
+                </script>
+                <script>
+                    document.getElementById("id_slug").classList.add("summernote");
+                </script>
+
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                  <br>
+                  <button type="submit" class="btn btn-primary">Submit Story</button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_content").classList.add("summernote");
+document.getElementById("id_phone").classList.add("form-control");
+document.getElementById("id_email").classList.add("form-control");
+document.getElementById("id_name").classList.add("form-control");
+document.getElementById("id_video_link").classList.add("form-control");
+
+$(document).ready(function() {
+    //summernote
+    $('.summernote').summernote({
+            placeholder: 'Write your story',
+            tabsize: 2,
+            height: 300,
+            width: 800,
+            toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video',]],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+          });
+
+          //slug
+          $().ready(function () {
+              $('#id_slug').slugify('#id_title');
+
+              var pigLatin = function(str) {
+                  return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+              }
+
+              $('#pig_latin').slugify('#id_title', {
+                      slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+                  }
+              );
+
+          });
+});
+</script>
+
+{% endblock content %}

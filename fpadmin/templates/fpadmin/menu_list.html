@@ -1,0 +1,81 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<div class="page-wrapper" style="display: block;">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Menu Manager</h1>
+                                <h6 class="card-subtitle">You can edit, create and delete pages already created, Make sure to check if page is linked to menu.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Menu Title</th>
+                                            <th scope="col">Page</th>
+                                            <th scope="col">Date Posted/Edited</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for menu in menus %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>{{ menu }}</td>
+                                            <td>{{ menu.page }}</td>
+                                            <td>{{ menu.date_created }}</td>
+                                            <td> <a class="btn btn-success" href="{% url 'menu-update' menu.id %}"><span class="ti-pencil"></span> Edit</a> <a class="btn btn-danger" href="{% url 'menu-delete' menu.id %}"><span class="ti-trash"></span> Delete</a> </td>
+                                        </tr>
+
+                                        {% endfor%}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+
+        </div>
+{% endblock %}

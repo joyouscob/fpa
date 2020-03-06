@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'cms/' %}images/favicon.png">
+    <title>Flood Prediction by NIHSA</title>
+
+    <!--Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Karla:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="{% static 'cms/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cms/css/bootstrap-theme.min.css' %}">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="{% static 'cms/css/font-awesome.min.css' %}">
+    <!--Owl Carousel-->
+    <link rel="stylesheet" href="{% static 'cms/vendors/owl.carousel/owl.carousel.css' %}">
+    <!--Magnific Popup-->
+    <link rel="stylesheet" href="{% static 'cms/vendors/magnific-popup/magnific-popup.css' %}">
+    <!--Flip Clock-->
+    <link rel="stylesheet" href="{% static 'cms/vendors/flip-clock/flipclock.css' %}">
+
+    <!--Theme Styles-->
+    <link rel="stylesheet" href="{% static 'cms/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'cms/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'cms/css/index.css' %}">
+
+    <!--[if lt IE 9]>
+
+        <script src="{% static "js/html5shiv.min.js" %}"></script>
+        <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+<style media="screen">
+/* styles for '...' */
+.block-with-text {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.2em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 6.8em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: justify;
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+    }
+/* create the ... */
+.block-with-text:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+    }
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+    }
+</style>
+</head>
+<body>
+
+    <section class="topbar row">
+        <div class="container">
+            <div class="pull-left welcome-notice">{{ homesettings.mini_header_right | safe }}</div>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#"><i class="fa fa-envelope-o"></i>{{ homesettings.email }}</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i>{{ homesettings.phone }}</a></li>
+                <!-- Check if user is authenticated -->
+                    {% if user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'logout'%}">Logout</a></li>
+                    {% else %}
+                    <li><a class="nav-link" href="{% url 'login'%}">Login</a></li>
+                    <li><a class="nav-link" href="{% url 'register'%}">Register</a></li>
+                    {% endif %}
+                    <!-- Check if user is authenticated -->
+                <li class="search-form">
+                    <form action="#" method="get" role="form" class="top_search">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Type your location &amp; Enter">
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <nav class="navbar navbar-default navbar-static-top navbar3">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--LOGO-->
+                <a class="navbar-brand" href="#" ><img src="{% static "cms/images/logo7.png" %}" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <a href="/story/new/create/" class="btn-primary hidden-sm hidden-xs pull-right">Help Centre</a>
+
+
+
+<!--MENU STARTS HERE-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="http://{{ request.get_host }}">Home</a> </li>
+                    {% for table1Instance in menu %}
+
+
+                        <li class="dropdown {% if request.get_full_path == table1Instance.page.slug %}active{% endif %}">
+                            <a href="http://{{ request.get_host }}/{{ table1Instance.page.slug }}-{{ table1Instance.page.id }}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">{{ table1Instance.title }}</a>
+                            <ul class="dropdown-menu">
+                                {% for menu2 in table1Instance.submenu_set.all %}
+                                    <li><a href="http://{{ request.get_host }}/{{ menu2.page.slug }}-{{ menu2.page.id }}">{{ menu2.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+
+
+
+                    <li><a href="/story/new/create/">Tell Your Story</a></li>
+                </ul>
+            </div>
+            <hr style="background-color:#999;">
+        </div>
+
+    </nav>
+
+
+    <!--Error Messages-->
+<div class=“alert alert-{{ message.tags }}”>
+{% if messages %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
+</div>
+
+
+{% block content %}
+{% endblock content %}
+
+
+
+
+
+
+
+
+    <section class="row newsletter_signup style2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4>NEWSLETTER SIGN-UP</h4>
+                    <p>Praesent diam massa, interdum quis ex id, laoreet interdum odio.</p>
+                </div>
+                <form class="col-sm-7 form-inline newsletter_signup_form style2">
+                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="submit" value="submit" class="btn-primary white">
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+<!--FOOTER START-->
+    <footer class="row foooter footer2">
+        <div class="container">
+            {{ homesettings.footer | safe }}
+        </div>
+
+        <div class="row copyright_area m0">
+            <div class="container">
+                {{ homesettings.copyright_text | safe }}
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="{% static "cms/js/jquery-2.1.4.min.js" %}"></script>
+    <script src="{% static "cms/js/bootstrap.min.js" %}"></script>
+    <!--Magnific Popup-->
+    <script src="{% static "cms/vendors/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+    <!--Owl Carousel-->
+    <script src="{% static "cms/vendors/owl.carousel/owl.carousel.min.js" %}"></script>
+    <!--Flip Clock-->
+    <script src="{% static "cms/vendors/flip-clock/flipclock.min.js" %}"></script>
+    <!--CounterUp-->
+    <script src="{% static "cms/vendors/couterup/jquery.counterup.min.js" %}"></script>
+    <!--WayPoints-->
+    <script src="{% static "cms/vendors/waypoint/waypoints.min.js" %}"></script>
+    <!--Theme Script-->
+    <script src="{% static "cms/js/theme.js" %}"></script>
+</body>
+</html>

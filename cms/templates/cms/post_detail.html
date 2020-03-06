@@ -1,0 +1,36 @@
+{% extends 'cms/main_pages__.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<section class="row page-header">
+    <div class="container">
+        <h4>{{ object.title }}</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8">
+                <img class="img-responsive" src="{{ object.featured_image.url }}" alt="">
+                <hr>
+                <p>{{ object.content | safe }}</p>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,96 @@
+{% extends 'cms/main_pages.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+
+<section class="">
+
+
+<div class="container-fluid">
+
+    <div class="row" style="background-color:#edebeb; padding:20px;">
+
+
+
+            <form method="POST" class="form-row" id="searchForm" data-lgas-url="{% url 'ajax_load_lgas' %}" novalidate>
+              {% csrf_token %}
+                <div class="form-group col-md-4">
+                    <label class="form-label">Choose State</label>
+                        {{ form.state }}
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label class="form-label">Choose Local Governemnt</label>
+                        {{ form.lga}}
+                </div>
+
+                <div class="col-auto mt-1" style="padding-top:25px;">
+                  <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                </div>
+
+
+
+
+            </form>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+            <script>
+
+            document.getElementById("id_state").classList.add("form-control", "col-lg-8");
+            document.getElementById("id_lga").classList.add("form-control", "col-lg-8");
+
+              $("#id_state").change(function () {
+                var url = $("#searchForm").attr("data-lgas-url");  // get the url of the `load_cities` view
+                var stateId = $(this).val();  // get the selected country ID from the HTML input
+
+                $.ajax({                       // initialize an AJAX request
+                  url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                  data: {
+                    'state': stateId       // add the country id to the GET parameters
+                  },
+                  success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_lga").html(data);  // replace the contents of the city input with the data that came from the server
+                  }
+                });
+
+              });
+            </script>
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <div class="row" id="map">
+
+
+
+    </div>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% endblock %}

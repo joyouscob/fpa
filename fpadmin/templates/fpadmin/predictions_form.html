@@ -1,0 +1,96 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<script>
+    document.getElementById("id_content").classList.add("summernote");
+</script>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Create/Update Prediction</h1>
+                <h6 class="card-subtitle">Create Predictions</h6>
+                <hr>
+                    <div class="form-group mt-4">
+                    <form method="POST" action="" enctype="multipart/form-data" id="searchForm" data-lgas-url="{% url 'ajax_load_lgas' %}">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                      <br>
+                      <button type="submit" class="btn btn-primary">Add/Update Predcition</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_actual_occurence").classList.add("summernote");
+document.getElementById("id_state").classList.add("form-control", "col-lg-8");
+document.getElementById("id_lga").classList.add("form-control", "col-lg-8");
+document.getElementById("id_year").classList.add("form-control", "col-lg-8");
+document.getElementById("id_prediction").classList.add("form-control", "col-lg-8");
+document.getElementById("id_actual_occurence").classList.add("form-control", "col-lg-8");
+
+$(document).ready(function() {
+    //summernote
+    $('.summernote').summernote({
+            placeholder: 'Build Your Amazing Post',
+            tabsize: 2,
+            height: 300,
+            width: 800,
+            // toolbar: [
+            //   ['style', ['style']],
+            //   ['font', ['bold', 'underline', 'clear']],
+            //   ['color', ['color']],
+            //   ['para', ['ul', 'ol', 'paragraph']],
+            //   ['table', ['table']],
+            //   ['insert', ['link', 'picture', 'video']],
+            //   ['view', ['fullscreen', 'codeview', 'help']]
+            // ]
+          });
+
+          //slug
+          $().ready(function () {
+              $('#id_slug').slugify('#id_title');
+
+              var pigLatin = function(str) {
+                  return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+              }
+
+              $('#pig_latin').slugify('#id_title', {
+                      slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+                  }
+              );
+
+          });
+});
+</script>
+
+
+<script>
+
+
+  $("#id_state").change(function () {
+    var url = $("#searchForm").attr("data-lgas-url");  // get the url of the `load_lgas` view
+    var stateId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'state': stateId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_lga").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+
+  });
+</script>
+
+{% endblock content %}

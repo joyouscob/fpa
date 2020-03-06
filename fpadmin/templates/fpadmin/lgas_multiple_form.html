@@ -1,0 +1,133 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<script>
+    document.getElementById("id_content").classList.add("summernote");
+</script>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Create Local Government List</h1>
+                <h6 class="card-subtitle">Populate Lgas</h6>
+                    <hr>
+                <div class="form-group mt-4">
+                    <form method="POST" action="" enctype="multipart/form-data" id="searchForm" data-lgas-url="{% url 'ajax_load_lgas' %}">
+                        <div class="row">
+
+
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                        </div>
+                      <br>
+                      <button type="submit" class="btn btn-primary">Add Local Goverments</button>
+                    </form>
+                    <hr class="mt-4 mb-4 pt-4 pm-4">
+                    <h2 class="mt-4">Recently Uploaded</h2>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">LGA</th>
+                                <th scope="col">State</th>
+                                <th scope="col">Prediction</th>
+                                <th scope="col">Prediction Year</th>
+                                <th scope="col">Date Posted/Edited</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lga in lgas %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{ lga.name }}</td>
+                                <td>{{ lga.state }}</td>
+                                <td>Lat: <b>{{ lga.lat }}</b>, Lng: <b>{{ lga.lng}}</b></td>
+                                <td>{{ lga.hydro_area }}</td>
+                                <td>{{ lga.create_date }}</td>
+                                <td> <a class="btn btn-success" href="{% url 'lgas-update' lga.id %}"><span class="ti-pencil"></span> Edit</a> <a class="btn btn-danger" href="{% url 'lgas-delete' lga.id %}"><span class="ti-trash"></span> Delete</a> </td>
+                            </tr>
+
+                            {% endfor%}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_form-0-state").classList.add("form-control", "col-lg-10", "p-t-10");
+document.getElementById("id_form-1-state").classList.add("form-control", "col-lg-10", "p-t-10");
+document.getElementById("id_form-2-state").classList.add("form-control", "col-lg-10", "p-t-10");
+document.getElementById("id_form-3-state").classList.add("form-control", "col-lg-10", "p-t-10");
+
+
+// Get Class names and add extra class
+var element = document.getElementsByClassName('multiField');
+
+// Iterate through the retrieved elements and add the necessary class names.
+for(var i = 0; i < element.length; i++)
+{
+    element[i].classList.add('col-lg-6', 'm-t-40');
+    console.log(element[i].className);
+}
+
+
+document.getElementById("id_form-0-name").classList.add("form-control", "col-lg-10");
+
+document.getElementById("id_form-1-name").classList.add("form-control", "col-lg-10");
+document.getElementById("id_form-2-name").classList.add("form-control", "col-lg-10");
+document.getElementById("id_form-3-name").classList.add("form-control", "col-lg-10");
+
+document.getElementById("id_form-0-lat").classList.add("form-control", "col-lg-10");
+
+document.getElementById("id_form-1-lat").classList.add("form-control", "col-lg-10");
+document.getElementById("id_form-2-lat").classList.add("form-control", "col-lg-10");
+document.getElementById("id_form-3-lat").classList.add("form-control", "col-lg-10");
+
+document.getElementById("id_form-0-lng").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-1-lng").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-2-lng").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-3-lng").classList.add("form-control", "col-lg-10", "m-b-10");
+
+document.getElementById("id_form-0-hydro_area").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-1-hydro_area").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-2-hydro_area").classList.add("form-control", "col-lg-10", "m-b-10");
+document.getElementById("id_form-3-hydro_area").classList.add("form-control", "col-lg-10", "m-b-10");
+
+
+</script>
+
+
+<script>
+
+
+  $("#id_form-0-state").change(function () {
+    var url = $("#searchForm").attr("data-lgas-url");  // get the url of the `load_lgas` view
+    var stateId = $(this).val();  // get the selected country ID from the HTML input
+
+    $.ajax({                       // initialize an AJAX request
+      url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'state': stateId       // add the country id to the GET parameters
+      },
+      success: function (data) {   // `data` is the return of the `load_cities` view function
+        $("#id_form-0-lga").html(data);  // replace the contents of the city input with the data that came from the server
+      }
+    });
+
+  });
+
+</script>
+
+{% endblock content %}

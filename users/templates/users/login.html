@@ -1,0 +1,45 @@
+{% extends 'cms/main_pages.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<section class="row page-header">
+    <div class="container">
+        <h4>Login</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8">
+
+
+                <form method="POST" action="" >
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                  <br>
+                  <button type="submit" class="btn btn-primary" style="margin-top:10px;">Sign In</button>
+                </form>
+
+                Need an account?, Register <a href="{% url 'fpa-admin' %}">here</a>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    document.getElementById("id_username").classList.add("form-control", "col-lg-6", "mb-2");
+    document.getElementById("id_password").classList.add("form-control", "col-lg-6");
+</script>
+
+
+{% endblock content %}

@@ -1,0 +1,84 @@
+{% extends 'fpadmin/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<script>
+    document.getElementById("id_content").classList.add("summernote");
+</script>
+
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">{{ object.title }}</h1>
+                <hr>
+                    <div class="form-group mt-4">
+                            {{ object.content | safe }}
+                            <!--Show if video link exists-->
+                            {% if object.video_link %}
+                                <b>Video Link <span class="text-danger">(Thread with caution)</span>:</b> <a href="{{ object.video_link }}" target="_blank">{{ object.video_link }}</a>
+                            {% endif %}
+                    </div>
+
+                    {% if object.video_link %}
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="{{ object.video_link }}" allowfullscreen></iframe>
+                          
+                        </div>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+// add class to form
+document.getElementById("id_content").classList.add("summernote");
+document.getElementById("id_title").classList.add("form-control", "col-lg-8");
+document.getElementById("id_slug").classList.add("form-control", "col-lg-8");
+
+$(document).ready(function() {
+    //summernote
+    $('.summernote').summernote({
+            placeholder: 'Build Your Amazing Page',
+            tabsize: 2,
+            height: 300,
+            // width: 800,
+            // toolbar: [
+            //   ['style', ['style']],
+            //   ['font', ['bold', 'underline', 'clear']],
+            //   ['color', ['color']],
+            //   ['para', ['ul', 'ol', 'paragraph']],
+            //   ['table', ['table']],
+            //   ['insert', ['link', 'picture', 'video']],
+            //   ['view', ['fullscreen', 'codeview', 'help']]
+            // ]
+          });
+
+          //slug
+          $().ready(function () {
+              $('#id_slug').slugify('#id_title');
+
+              var pigLatin = function(str) {
+                  return str.replace(/(\w*)([aeiou]\w*)/g, "$2$1ay");
+              }
+
+              $('#pig_latin').slugify('#id_title', {
+                      slugFunc: function(str, originalFunc) { return pigLatin(originalFunc(str)); }
+                  }
+              );
+
+          });
+});
+</script>
+
+{% endblock content %}

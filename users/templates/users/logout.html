@@ -1,0 +1,30 @@
+{% extends 'cms/main_pages.html'%}
+
+{% block content %}
+
+<section class="row page-header">
+    <div class="container">
+        <h4>Logged Out</h4>
+    </div>
+</section>
+
+<section class="row content_about page-content">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-8">
+                <p>
+                    You have successfully logged out.
+                </p>
+                <a class="btn btn-info" href="{% url 'cms-home' %}">Go Home</a> | <a class="btn btn-info" href="{% url 'login' %}">Login again</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+{% endblock content %}
